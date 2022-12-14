@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tools-to-debug
+  labels:
+    app: tools-to-debug
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tools-to-debug
+  template:
+    metadata:
+      labels:
+        app: tools-to-debug
+    spec:
+      containers:
+        - name: tools-to-debug
+          image: nginx
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: dockercred
